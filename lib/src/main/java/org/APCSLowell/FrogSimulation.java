@@ -14,13 +14,23 @@ public class FrogSimulation {
     // implementation is below, but not important
 
     public boolean simulate() {
-        /* to be implemented in part (a) */
-
+        int location = 0;
+        for (int i = 0; i < maxHops; i++) {
+            location = location + hopDistance();
+            if (location < 0) {return false;}
+            if (location >= goalDistance) {return true;}
+        }
+        return false;
     }
 
     public double runSimulations(int num) {
-        /* to be implemented in part (b) */
-
+        double wins = 0;
+        double loses = 0;
+        for (int i = 0; i < num; i++) {
+            if (simulate()) {wins++;}
+            else {loses++;}
+        }
+        return wins/(wins+loses);
     }
 
     // ignore the code below this line
